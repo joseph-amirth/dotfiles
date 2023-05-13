@@ -1,0 +1,7 @@
+[credential]
+	helper = cache
+[user]
+	email = epicjoe128@gmail.com
+	name = joseph-amirth
+[init]
+	defaultBranch = master
