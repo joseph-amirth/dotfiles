@@ -14,6 +14,14 @@ super + @space
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# Audio control.
+XF86Audio{LowerVolume,RaiseVolume,Mute}
+    amixer set Master {5%-,5%+,toggle}
+
+# Brightness control.
+XF86MonBrightness{Down,Up}
+    light -{U,A} 7
+
 #
 # bspwm hotkeys
 #
