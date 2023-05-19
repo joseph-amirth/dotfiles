@@ -26,8 +26,8 @@ function install_optional_dependencies() {
     # Install Packer for Neovim.
     paru -S --noconfirm nvim-packer-git
 
-    # Install JetBrains Mono.
-    paru -S --noconfirm ttf-jetbrains-mono-git
+    # Install JetBrains Mono nerd font.
+    sudo pacman -S --noconfirm ttf-jetbrains-mono-nerd
 }
 
 function setup_dotfiles() {
