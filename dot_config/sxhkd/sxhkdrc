@@ -22,6 +22,11 @@ XF86Audio{LowerVolume,RaiseVolume,Mute}
 XF86MonBrightness{Down,Up}
     light -{U,A} 7
 
+# Print screen.
+
+Print
+    maim ~/Pictures/screenshot-$(date +%s).png
+
 #
 # bspwm hotkeys
 #
