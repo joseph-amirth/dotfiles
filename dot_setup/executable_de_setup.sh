@@ -8,6 +8,8 @@ function wait_for_internet_connection() {
         echo "Check internet connection."
         sleep 1
     done
+    
+    echo "Internet connection established."
 }
 
 function install_prerequisites() {
@@ -36,7 +38,7 @@ function install_de() {
     sudo pacman -S --noconfirm xorg nvidia-open
 
     # Install and enable display manager.
-    sudo pacman -S lightdm lightdm-gtk-greeter
+    sudo pacman -S lightdm lightdm-slick-greeter
     sudo systemctl enable lightdm.service
 
     # Install window manager and composite manager.
@@ -45,12 +47,26 @@ function install_de() {
 
     # Install sound server.
     sudo pacman -S --noconfirm pipewire-audio pipewire-alsa pipewire-pulese pipewire-jack alsa-utils
+}
 
-    # Install backlight manager.
+function install_utilities() {
+    # Install and setup backlight manager.
+    usermod -aG video joseph
+    echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", RUN+=\"/bin/chgrp video $sys$devpath/brightness\", RUN+=\"/bin/chmod g+w $sys$devpath/brightness" > /etc/udev/rules.d/backlight.rules
     sudo pacman -S light
+
+    # Install bluetooth protocol stack.
+    sudo pacman -S bluez bluez-utils
+
+    # Install maim for screenshots.
+    sudo pacman -S maim
+
+    # Install libnotify and notification server.
+    sudo pacman -S libnotify dunst
 }
 
 wait_for_internet_connection
 install_prerequisites
 install_aur_helper
 install_de
+install_utilities
