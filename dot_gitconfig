@@ -5,3 +5,5 @@
 	name = joseph-amirth
 [init]
 	defaultBranch = master
+[http]
+	postBuffer = 157286400
