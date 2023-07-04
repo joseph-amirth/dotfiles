@@ -33,21 +33,17 @@ function wait_for_internet_connection() {
 }
 
 function install_prerequisites() {
-    # To install AUR packages and for chezmoi.
     sudo pacman -S --noconfirm git
 
     # To make makepkg work.
     sudo pacman -S --noconfirm base-devel
-
-    # Install rust for paru (AUR helper).
-    sudo pacman -S --noconfirm rustup
-    rustup default stable
-
-    # Install python and PIP for ranger.
-    sudo pacman -S --noconfirm python python-pip
 }
 
 function install_aur_helper() {
+    # Install rust (prerequisite for paru).
+    sudo pacman -S --noconfirm rustup
+    rustup default stable
+
     # Install paru (AUR helper).
     git clone https://aur.archlinux.org/paru.git ~/aurtemp
     cd ~/aurtemp
@@ -64,7 +60,7 @@ function install_de() {
     sudo pacman -S --noconfirm lightdm lightdm-slick-greeter
     sudo systemctl enable lightdm.service
 
-    # Install window manager and composite manager.
+    # Install window manager and compositor.
     sudo pacman -S --noconfirm bspwm sxhkd rofi polybar feh
     paru -S --noconfirm picom-jonaburg-git
 }
@@ -74,8 +70,8 @@ function install_utils() {
     sudo pacman -S --noconfirm pipewire-audio pipewire-alsa pipewire-pulese pipewire-jack alsa-utils
 
     # Install and setup backlight management.
-    usermod -aG video joseph
-    echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", RUN+=\"/bin/chgrp video $sys$devpath/brightness\", RUN+=\"/bin/chmod g+w $sys$devpath/brightness" > /etc/udev/rules.d/backlight.rules
+    sudo usermod -aG video joseph
+    sudo echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", RUN+=\"/bin/chgrp video $sys$devpath/brightness\", RUN+=\"/bin/chmod g+w $sys$devpath/brightness" > /etc/udev/rules.d/backlight.rules
     sudo pacman -S --noconfirm light
 
     # Install bluetooth protocol stack.
@@ -101,18 +97,24 @@ function setup_terminal() {
 }
 
 function install_apps() {
+    # Install python and PIP (prerequisites for ranger).
+    sudo pacman -S --noconfirm python python-pip
+
     # Install ranger (file manager).
     paru -S --noconfirm ranger-git
 
-    # Install google-chrome.
-    paru -S --noconfirm google-chrome
+    # Install firefox.
+    sudo pacman -S --noconfirm firefox
 }
 
 function install_optional_deps() {
     # Install powerline-fonts for the agnoster theme of zsh.
     sudo pacman -S --noconfirm powerline-fonts
 
-    # Install zsh-syntax-highlighting and zsh-autosuggestions.
+    # Install powerlevel10k (zsh theme).
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+    # Install zsh-syntax-highlighting and zsh-autosuggestions (zsh plugins).
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
