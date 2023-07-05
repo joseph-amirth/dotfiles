@@ -1,2 +1,2 @@
-.config/nvim/plugin
-.config/nvim/plugin/packer_compiled.lua
+.config/nvim/plugin/**
+.config/ranger/plugins/**
