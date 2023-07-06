@@ -52,7 +52,7 @@ function install_aur_helper() {
     cd ~ && rm -rf ~/aurtemp
 }
 
-function install_de() {
+function setup_desktop_env() {
     # Install X and GPU drivers.
     sudo pacman -S --noconfirm xorg nvidia-open
 
@@ -63,9 +63,7 @@ function install_de() {
     # Install window manager and compositor.
     sudo pacman -S --noconfirm bspwm sxhkd rofi polybar feh
     paru -S --noconfirm picom-jonaburg-git
-}
 
-function install_utils() {
     # Install sound server.
     sudo pacman -S --noconfirm pipewire-audio pipewire-alsa pipewire-pulese pipewire-jack alsa-utils
 
@@ -89,27 +87,8 @@ function setup_terminal() {
     sudo pacman -S --noconfirm zsh
     chsh -s $(which zsh)
 
-    # Install oh-my-zsh.
+    # Install oh-my-zsh (zsh plugin manager).
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-
-    # Install Neovim and Kitty.
-    sudo pacman -S --noconfirm neovim kitty
-}
-
-function install_apps() {
-    # Install python and PIP (prerequisites for ranger).
-    sudo pacman -S --noconfirm python python-pip
-
-    # Install ranger (file manager).
-    paru -S --noconfirm ranger-git
-
-    # Install firefox.
-    sudo pacman -S --noconfirm firefox
-}
-
-function install_optional_deps() {
-    # Install powerline-fonts for the agnoster theme of zsh.
-    sudo pacman -S --noconfirm powerline-fonts
 
     # Install powerlevel10k (zsh theme).
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
@@ -118,14 +97,33 @@ function install_optional_deps() {
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-    # Install Packer for Neovim.
-    paru -S --noconfirm nvim-packer-git
+    # Install Neovim and Kitty.
+    sudo pacman -S --noconfirm neovim kitty
+
+    # Install powerline-fonts for the agnoster theme of zsh.
+    sudo pacman -S --noconfirm powerline-fonts
 
     # Install JetBrains Mono nerd font.
     sudo pacman -S --noconfirm ttf-jetbrains-mono-nerd
+}
+
+function install_file_browser() {
+    # Install python and PIP (prerequisites for ranger).
+    sudo pacman -S --noconfirm python python-pip
+
+    # Install ranger (file manager).
+    paru -S --noconfirm ranger-git
+
+    # Install devicons for ranger.
+    git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 
     # Install pillow for ranger image preview. 
     pip install pillow
+}
+
+function install_web_browser() {
+    # Install firefox.
+    sudo pacman -S --noconfirm firefox
 }
 
 function setup_dotfiles() {
@@ -140,14 +138,12 @@ install_prerequisites
 
 install_aur_helper
 
-install_de
-
-install_utils
+setup_desktop_env
 
 setup_terminal
 
-install_apps
+install_file_browser
 
-install_optional_deps
+install_web_browser
 
 setup_dotfiles
