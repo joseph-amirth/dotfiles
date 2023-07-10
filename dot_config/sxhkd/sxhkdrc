@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + @space
-    rofi -modi drun,run -show drun
+    rofi -show drun
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -23,7 +23,6 @@ XF86MonBrightness{Down,Up}
     light -{U,A} 7
 
 # Print screen.
-
 Print
     maim ~/Pictures/screenshot-$(date +%s).png
 
@@ -120,6 +119,10 @@ super + ctrl + shift + space
 #
 # move/resize
 #
+
+# equally distribute total screen area to each window
+super + alt + b
+    bspc node @/ -B
 
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
