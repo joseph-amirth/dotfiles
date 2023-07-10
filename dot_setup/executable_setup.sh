@@ -126,6 +126,15 @@ function install_web_browser() {
     sudo pacman -S --noconfirm firefox
 }
 
+function install_spotify() {
+    # Install and enable spotify client.
+    sudo pacman -S spotifyd
+
+    curl -sSL https://raw.githubusercontent.com/Spotifyd/spotifyd/master/contrib/spotifyd.service -o ~/.config/systemd/user/spotifyd.service
+
+    systemctl --user enable spotifyd.service --now
+}
+
 function setup_dotfiles() {
     # Install and set up chezmoi and dotfiles.
     sudo pacman -S --noconfirm chezmoi
