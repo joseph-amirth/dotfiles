@@ -64,6 +64,9 @@ function setup_desktop_env() {
     sudo pacman -S --noconfirm bspwm sxhkd rofi polybar feh
     paru -S --noconfirm picom-jonaburg-git
 
+    # Install icon theme for rofi.
+    sudo pacman -S --noconfirm papirus-icon-theme
+
     # Install sound server.
     sudo pacman -S --noconfirm pipewire-audio pipewire-alsa pipewire-pulese pipewire-jack alsa-utils
 
@@ -128,7 +131,7 @@ function install_web_browser() {
 
 function install_spotify() {
     # Install and enable spotify client.
-    sudo pacman -S spotifyd
+    sudo pacman -S --noconfirm spotifyd
 
     curl -sSL https://raw.githubusercontent.com/Spotifyd/spotifyd/master/contrib/spotifyd.service -o ~/.config/systemd/user/spotifyd.service
 
@@ -154,5 +157,7 @@ setup_terminal
 install_file_browser
 
 install_web_browser
+
+install_spotify
 
 setup_dotfiles
