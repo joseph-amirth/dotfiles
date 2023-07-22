@@ -14,11 +14,13 @@ bspc config gapless_monocle      true
 bspc rule -a kitty desktop='^1' follow=on
 bspc rule -a firefox desktop='^2' follow=on
 
+THEME=$(cat ~/.theme)
+
 # Status bar.
-~/.config/polybar/launch.sh &
+~/.config/polybar/launch.sh $THEME &
 
 # Background image.
-feh --bg-scale ~/.config/bspwm/assets/green-space.png
+feh --bg-scale ~/.config/bspwm/assets/$THEME.png
 
 # Composite manager.
 picom -b --experimental-backend
