@@ -14,6 +14,9 @@ case $1 in
     tloz)
         export PRIMARY="#2EA87E"
         ;;
+    astronaut)
+        export PRIMARY="#C8C4AA"
+        ;;
     *)
         export PRIMARY="#7EB3C9"
 esac
