@@ -1,8 +1,18 @@
 #!/bin/bash
 
-pgrep -x sxhkd > /dev/null || sxhkd &
+THEME=$(cat ~/.theme)
+MONITOR=$(xrandr -q | grep "HDMI-1-0 connected")
+
+if [[ $MONITOR ]]; then
+    xrandr --output HDMI-1-0 --auto --primary --output eDP-1 --off
+fi
+
+bspc config remove_unplugged_monitors   true
+bspc config remove_disabled_monitors    true
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9 0
+
+pgrep -x sxhkd > /dev/null || sxhkd &
 
 bspc config border_width 0
 bspc config window_gap 7
@@ -13,11 +23,14 @@ bspc config gapless_monocle      true
 
 bspc rule -a kitty desktop='^1' follow=on
 bspc rule -a firefox desktop='^2' follow=on
-
-THEME=$(cat ~/.theme)
+bspc rule -a Discord desktop='^3' follow=on
 
 # Status bar.
-~/.config/polybar/launch.sh $THEME &
+RESOLUTION=$(xrandr -q | grep -F "*" | awk '{ print $1 }')
+WIDTH=$(cut -d 'x' -f 1 <<< $RESOLUTION)
+HEIGHT=$(cut -d 'x' -f 2 <<< $RESOLUTION)
+
+~/.config/polybar/launch.sh $THEME $WIDTH $HEIGHT &
 
 # Background image.
 feh --bg-scale ~/.config/bspwm/assets/$THEME.png
