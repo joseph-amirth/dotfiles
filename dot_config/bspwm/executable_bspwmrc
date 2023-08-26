@@ -1,12 +1,17 @@
 #!/bin/bash
 
-THEME=$(cat ~/.theme)
+# Setting up monitors.
 MONITOR=$(xrandr -q | grep "HDMI-1-0 connected")
 
 if [[ $MONITOR ]]; then
     xrandr --output HDMI-1-0 --auto --primary --output eDP-1 --off
 fi
 
+RESOLUTION=$(xrandr -q | grep -F "*" | awk '{ print $1 }')
+WIDTH=$(cut -d 'x' -f 1 <<< $RESOLUTION)
+HEIGHT=$(cut -d 'x' -f 2 <<< $RESOLUTION)
+
+# Setting up bspwm. 
 bspc config remove_unplugged_monitors   true
 bspc config remove_disabled_monitors    true
 
@@ -14,26 +19,30 @@ bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc config border_width 0
-bspc config window_gap 7
+bspc config normal_border_color     "#777777"
+bspc config focused_border_color    "#FFFFFF"
+bspc config border_width            2
+bspc config window_gap              14
 
-bspc config split_ratio          0.50
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
+bspc config split_ratio             0.50
+
+bspc config single_monocle          true
+bspc config gapless_monocle         true
+bspc config borderless_monocle      true
+
+MONOCLE_PADDING=14
+bspc config top_monocle_padding     $MONOCLE_PADDING
+bspc config right_monocle_padding   $MONOCLE_PADDING
+bspc config bottom_monocle_padding  $MONOCLE_PADDING
+bspc config left_monocle_padding    $MONOCLE_PADDING
 
 bspc rule -a kitty desktop='^1' follow=on
 bspc rule -a firefox desktop='^2' follow=on
 bspc rule -a Discord desktop='^3' follow=on
 
-# Status bar.
-RESOLUTION=$(xrandr -q | grep -F "*" | awk '{ print $1 }')
-WIDTH=$(cut -d 'x' -f 1 <<< $RESOLUTION)
-HEIGHT=$(cut -d 'x' -f 2 <<< $RESOLUTION)
+# Setting up status bar, background etc.
+THEME=$(cat ~/.theme)
 
 ~/.config/polybar/launch.sh $THEME $WIDTH $HEIGHT &
 
-# Background image.
 feh --bg-scale ~/.config/bspwm/assets/$THEME.png
-
-# Composite manager.
-picom -b --experimental-backend
