@@ -80,6 +80,8 @@ return require("packer").startup(function(use)
     -- Comments
     use({ "numToStr/Comment.nvim" })
 
+    use({ "folke/neodev.nvim" })
+
     --[[ Aesthetics ]]
 
     -- Syntax highlighting

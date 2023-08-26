@@ -11,6 +11,18 @@ require("mason-lspconfig").setup_handlers({
     end,
 })
 
+require("neodev").setup()
+
+require("lspconfig").lua_ls.setup({
+    settings = {
+        Lua = {
+            completion = {
+                callSnippet = "replace",
+            },
+        },
+    },
+})
+
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
