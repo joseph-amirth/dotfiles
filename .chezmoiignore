@@ -1,2 +1,3 @@
 .config/nvim/plugin/**
 .config/ranger/plugins/**
+.config/nvim/lua/.luarc.json
