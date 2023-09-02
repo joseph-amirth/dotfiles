@@ -87,13 +87,10 @@ return require("packer").startup(function(use)
     -- Syntax highlighting
     use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 
-    -- Color scheme
+    -- Color schemes
     use({
         "rebelot/kanagawa.nvim",
         as = "kanagawa",
-        config = function()
-            vim.cmd("colorscheme kanagawa")
-        end,
     })
 
     -- Icons

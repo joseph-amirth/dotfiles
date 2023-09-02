@@ -1,1 +1,5 @@
-require("kanagawa").load("wave")
+require("kanagawa").setup({
+    theme = "wave",
+})
+
+vim.cmd.colorscheme("kanagawa")
