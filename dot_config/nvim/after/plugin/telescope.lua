@@ -1,3 +1,6 @@
+local telescope = require("telescope")
+telescope.load_extension("dotfiles")
+
 local builtin = require("telescope.builtin")
 
 local theme = require("telescope.themes").get_dropdown({
