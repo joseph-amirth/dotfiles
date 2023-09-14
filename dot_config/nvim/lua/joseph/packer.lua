@@ -25,13 +25,7 @@ return require("packer").startup(function(use)
     --[[ Utility ]]
 
     -- Dashboard
-    use({
-        "glepnir/dashboard-nvim",
-        event = "VimEnter",
-        config = function()
-            require("dashboard").setup()
-        end,
-    })
+    use({ "glepnir/dashboard-nvim" })
 
     -- File explorer
     use({ "prichrd/netrw.nvim" })
@@ -79,6 +73,7 @@ return require("packer").startup(function(use)
 
     -- Comments
     use({ "numToStr/Comment.nvim" })
+    use({ "JoosepAlviste/nvim-ts-context-commentstring" })
 
     use({ "folke/neodev.nvim" })
 
