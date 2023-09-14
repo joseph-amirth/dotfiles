@@ -40,9 +40,16 @@ bspc rule -a kitty desktop='^1' follow=on
 bspc rule -a firefox desktop='^2' follow=on
 bspc rule -a Discord desktop='^3' follow=on
 
-# Setting up status bar, background etc.
+# Setting up status bar and background.
 THEME=$(cat ~/.theme)
 
 ~/.config/polybar/launch.sh $THEME $WIDTH $HEIGHT &
 
 feh --bg-scale ~/.config/bspwm/assets/$THEME.png
+
+# Setting up configs of other apps based on resolution.
+if [[ -f ~/.config/kitty/kitty.d/$RESOLUTION.conf ]]; then
+    ln -sf ~/.config/kitty/kitty.d/$RESOLUTION.conf ~/.config/kitty/override.conf
+elif [[ -f ~/.config/kitty/override.conf ]]; then
+    rm ~/.config/kitty/override.conf
+fi
