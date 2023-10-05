@@ -8,8 +8,6 @@ if [[ $MONITOR ]]; then
 fi
 
 RESOLUTION=$(xrandr -q | grep -F "*" | awk '{ print $1 }')
-WIDTH=$(cut -d 'x' -f 1 <<< $RESOLUTION)
-HEIGHT=$(cut -d 'x' -f 2 <<< $RESOLUTION)
 
 # Setting up bspwm. 
 bspc config remove_unplugged_monitors   true
@@ -40,12 +38,17 @@ bspc rule -a kitty desktop='^1' follow=on
 bspc rule -a firefox desktop='^2' follow=on
 bspc rule -a Discord desktop='^3' follow=on
 
-# Setting up status bar and background.
+# Setting up other stuff.
 THEME=$(cat ~/.theme)
 
-~/.config/polybar/launch.sh $THEME $WIDTH $HEIGHT &
+# Setting up status bar.
+~/.config/polybar/launch.sh $THEME $RESOLUTION &
 
+# Setting background.
 feh --bg-scale ~/.config/bspwm/assets/$THEME.png
+
+# Starting compositor.
+picom -b
 
 # Setting up configs of other apps based on resolution.
 if [[ -f ~/.config/kitty/kitty.d/$RESOLUTION.conf ]]; then

@@ -1,11 +1,24 @@
 #!/bin/bash
 
 THEME=$1
-WIDTH=$2
-HEIGHT=$3
+RESOLUTION=$2
+WIDTH=$(cut -d 'x' -f 1 <<< $RESOLUTION)
+HEIGHT=$(cut -d 'x' -f 2 <<< $RESOLUTION)
 
-# Bar config.
+# Dimensions.
 export WIDTH="$(($WIDTH - 14))px"
+
+case $RESOLUTION in
+    3840x2160)
+        export HEIGHT="48px"
+        export FONT0="JetBrainsMono Nerd Font:size=19:weight=bold;2"
+        ;;
+    *)
+        export HEIGHT="32px"
+        export FONT0="JetBrainsMono Nerd Font:size=13:weight=bold;2"
+        ;;
+esac
+
 
 # Color theme.
 export BACKGROUND="#001F1F28"
