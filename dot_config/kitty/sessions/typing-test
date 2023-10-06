@@ -1,0 +1,21 @@
+new_tab frontend
+cd ~/Stuff/typing-test/frontend
+layout grid
+launch zsh
+launch zsh
+
+new_tab backend
+cd ~/Stuff/typing-test/backend
+layout grid
+launch zsh
+launch zsh
+
+new_tab database
+cd ~/Stuff/typing-test/database
+layout grid
+launch zsh
+
+new_tab docs
+cd ~/Stuff/typing-test
+layout grid
+launch glow
