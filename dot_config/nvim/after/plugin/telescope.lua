@@ -1,4 +1,10 @@
+-- Ensure ripgrep is installed.
+if vim.fn.executable("rg") ~= 1 then
+    vim.fn.system({ "pacman", "-Qi", "ripgrep" })
+end
+
 local telescope = require("telescope")
+
 telescope.load_extension("dotfiles")
 
 local builtin = require("telescope.builtin")

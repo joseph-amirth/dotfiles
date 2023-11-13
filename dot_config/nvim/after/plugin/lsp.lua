@@ -5,7 +5,11 @@ require("mason-lspconfig").setup({})
 -- Set up lspconfig.
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-require("mason-lspconfig").setup_handlers({
+local mason_lspconfig = require("mason-lspconfig")
+mason_lspconfig.setup({
+    ensure_installed = { "lua_ls", "bashls" },
+})
+mason_lspconfig.setup_handlers({
     function(server_name) -- default handler (optional)
         require("lspconfig")[server_name].setup({ capabilities = capabilities })
     end,
