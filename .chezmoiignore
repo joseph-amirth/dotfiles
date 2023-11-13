@@ -1,3 +1,4 @@
+.config/kitty/override.conf
 .config/nvim/plugin/**
-.config/ranger/plugins/**
 .config/nvim/lua/.luarc.json
+.config/ranger/plugins/**
