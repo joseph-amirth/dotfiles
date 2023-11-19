@@ -1,6 +1,7 @@
 -- Ensure ripgrep is installed.
 if vim.fn.executable("rg") ~= 1 then
-    vim.fn.system({ "pacman", "-Qi", "ripgrep" })
+    -- TODO: Figure out how to get sudo to work in the below command.
+    vim.fn.system({ "sudo", "pacman", "-S", "--noconfirm", "ripgrep" })
 end
 
 local telescope = require("telescope")
