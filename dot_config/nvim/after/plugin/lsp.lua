@@ -1,6 +1,11 @@
--- Set up mason
+-- Set up mason.
 require("mason").setup({})
 require("mason-lspconfig").setup({})
+
+-- Set up nvim-cmp.
+require("cmp").setup({
+    preselect = "None",
+})
 
 -- Set up lspconfig.
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
