@@ -10,7 +10,19 @@ require("formatter").setup({
             require("formatter.filetypes.lua").stylua,
         },
         javascript = {
+            require("formatter.filetypes.javascript").prettier,
+        },
+        javascriptreact = {
             require("formatter.filetypes.javascriptreact").prettier,
+        },
+        typescript = {
+            require("formatter.filetypes.typescript").prettier,
+        },
+        typescriptreact = {
+            require("formatter.filetypes.typescriptreact").prettier,
+        },
+        json = {
+            require("formatter.filetypes.json").prettier,
         },
     },
 })
@@ -25,6 +37,11 @@ vim.cmd([[
 vim.api.nvim_create_autocmd("BufWritePre", {
     buffer = buffer,
     callback = function()
-        vim.lsp.buf.format({ async = false })
+        vim.lsp.buf.format({
+            filter = function(client)
+                return client.name ~= "tsserver"
+            end,
+            async = false,
+        })
     end,
 })
