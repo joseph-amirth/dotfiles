@@ -1,0 +1,5 @@
+preload = ~/.config/hypr/themes/{{theme}}/wallpaper.png
+wallpaper = HDMI-A-2,~/.config/hypr/themes/{{theme}}/wallpaper.png
+
+splash = false
+ipc = on

@@ -1,0 +1,36 @@
+* {
+  font-family: "JetBrains Mono NerdFont";
+  font-size: 16px;
+}
+
+window {
+  color: {{primary}};
+  background-color: {{bg}};
+}
+
+window#waybar {
+  color: {{primary}};
+  background-color: {{bg}};
+}
+
+#workspaces button {
+  color: {{primary}};
+}
+
+#workspaces button.active {
+  background-color: {{bg_alt}};
+  border-radius: 0;
+  border-top: 3px solid {{primary}};
+}
+
+#workspaces button.hover {
+  background-color: {{bg_alt}};
+}
+
+#pulseaudio {
+  padding: 0 10px;
+}
+
+#clock {
+  padding: 0 10px;
+}
