@@ -1,4 +1,3 @@
 .config/kitty/override.conf
-.config/nvim/plugin/**
-.config/nvim/lua/.luarc.json
+.config/nvim/lazy-lock.json
 .config/ranger/plugins/**

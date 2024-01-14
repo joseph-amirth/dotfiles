@@ -1,1 +1,3 @@
-require("joseph")
+require("config.map")
+require("config.lazy")
+require("config.opt")
