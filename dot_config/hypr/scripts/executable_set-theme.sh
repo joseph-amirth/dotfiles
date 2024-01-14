@@ -1,11 +1,25 @@
 #!/bin/bash
 
-theme=$1
+source _custom-script-util
+
+THEMES_DIR=~/.config/hypr/themes
+THEMES=$(basename --multiple $(find $THEMES_DIR -type d -not -wholename $THEMES_DIR ))
+
+THEME=$1
+if [[ -z $THEME ]]; then
+    THEME=$(echo "$THEMES" | fzf)
+fi
+
+if grep "^$THEME$" <<< "$THEMES" > /dev/null; then
+    true
+else
+    fatalln "Invalid theme."
+fi
 
 inject_color() {
     key=$1
     file=$2
-    value=$(cat ~/.config/hypr/themes/$theme/color.json | jq -r .$1)
+    value=$(cat ~/.config/hypr/themes/$THEME/color.json | jq -r .$1)
     exp="s/\{\{$key\}\}/$value/"
     sed -i -r "$exp" "$file"
 }
@@ -29,12 +43,12 @@ set_wallpaper() {
     template=~/.config/hypr/hyprpaper.conf.tmpl
     file=~/.config/hypr/hyprpaper.conf
     cp -f "$template" "$file"
-    exp="s/\{\{theme\}\}/$theme/"
+    exp="s/\{\{theme\}\}/$THEME/"
     sed -i -r "$exp" "$file"
 
     # Set wallpaper.
-    hyprctl hyprpaper preload "~/.config/hypr/themes/$theme/wallpaper.png"
-    hyprctl hyprpaper wallpaper "HDMI-A-2,~/.config/hypr/themes/$theme/wallpaper.png"
+    hyprctl hyprpaper preload "~/.config/hypr/themes/$THEME/wallpaper.png"
+    hyprctl hyprpaper wallpaper "HDMI-A-2,~/.config/hypr/themes/$THEME/wallpaper.png"
 }
 
 set_waybar_theme >/dev/null 2>&1
