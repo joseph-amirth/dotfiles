@@ -95,8 +95,6 @@ alias vim=nvim
 export VISUAL=nvim
 export EDITOR=nvim
 
-export JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
-
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.cargo/bin
 
