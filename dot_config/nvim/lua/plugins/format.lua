@@ -4,8 +4,6 @@ return {
         config = function()
             -- TODO: Ensure formatters are installed.
 
-            local util = require("formatter.util")
-
             require("formatter").setup({
                 logging = true,
                 log_level = vim.log.levels.WARN,
