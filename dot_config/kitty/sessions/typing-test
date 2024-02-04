@@ -1,6 +1,9 @@
 new_tab frontend
 cd ~/Stuff/typing-test/frontend
+layout tall
 launch zsh
+launch npm run dev
+launch npx tsc --noEmit --watch
 launch zsh
 
 new_tab backend
@@ -10,7 +13,7 @@ launch zsh
 
 new_tab database
 cd ~/Stuff/typing-test/database
-launch zsh
+launch mariadb -u joe -p typing_test
 launch zsh
 
 new_tab docs
