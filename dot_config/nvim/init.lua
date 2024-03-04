@@ -1,3 +1,4 @@
 require("config.map")
-require("config.lazy")
+require("config.autocmd")
 require("config.opt")
+require("config.lazy")

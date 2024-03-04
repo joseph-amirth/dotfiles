@@ -1,3 +1,7 @@
+-- Disable netrw since we will use nvim-tree.
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Line number settings for easy line jumping.
 vim.opt.nu = true
 vim.opt.relativenumber = true

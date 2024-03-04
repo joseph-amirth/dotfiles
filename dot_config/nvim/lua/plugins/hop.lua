@@ -1,17 +1,33 @@
+local function keys_helper(key, desc, fn)
+    return {
+        mode = "n",
+        key,
+        desc = "Hop to " .. desc,
+        function()
+            local hop = require("hop")
+            fn(hop)
+        end,
+    }
+end
+
 return {
     {
         "smoka7/hop.nvim",
         version = "*",
         opts = {},
-        config = function()
-            local hop = require("hop")
-            hop.setup({})
-
-            vim.keymap.set("n", "<leader>ja", hop.hint_anywhere)
-            vim.keymap.set("n", "<leader>jw", hop.hint_words)
-            vim.keymap.set("n", "<leader>jj", function()
-                hop.hint_anywhere({ current_line_only = true })
-            end)
+        config = function(_, opts)
+            require("hop").setup(opts)
         end,
+        keys = {
+            keys_helper("<leader>jj", "anywhere in line", function(hop)
+                hop.hint_anywhere({ current_line_only = true })
+            end),
+            keys_helper("<leader>jw", "any word", function(hop)
+                hop.hint_words()
+            end),
+            keys_helper("<leader>ja", "anywhere", function(hop)
+                hop.hint_anywhere()
+            end),
+        },
     },
 }
