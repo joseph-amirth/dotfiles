@@ -4,7 +4,7 @@ return {
             "glepnir/dashboard-nvim",
             dependencies = {
                 "nvim-tree/nvim-web-devicons",
-                "nvim-telescope/telescope.nvim",
+                "telescope",
             },
             opts = {
                 theme = "hyper",

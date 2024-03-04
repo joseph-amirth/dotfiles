@@ -1,9 +1,16 @@
 return {
-    "nvim-telescope/telescope.nvim",
-    dependencies = { { "nvim-lua/plenary.nvim" } },
-    config = function()
-        local telescope = require("telescope")
-        telescope.load_extension("dotfiles")
-    end,
-    keys = require("plugins.telescope.keys"),
+    {
+        "nvim-telescope/telescope.nvim",
+        name = "telescope",
+        dependencies = { { "nvim-lua/plenary.nvim", "fzf" } },
+        opts = {},
+        config = function(_, opts)
+            local telescope = require("telescope")
+            telescope.setup(opts)
+            telescope.load_extension("dotfiles")
+            telescope.load_extension("fzf")
+        end,
+        keys = require("plugins.telescope.keys"),
+    },
+    { "nvim-telescope/telescope-fzf-native.nvim", name = "fzf", build = "make" },
 }
