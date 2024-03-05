@@ -2,44 +2,83 @@ return {
     {
         {
             "glepnir/dashboard-nvim",
+            name = "dashboard",
+            event = "VimEnter",
             dependencies = {
                 "nvim-tree/nvim-web-devicons",
                 "telescope",
             },
             opts = {
-                theme = "hyper",
+                theme = "doom",
                 config = {
-                    week_header = {
-                        enable = true,
-                    },
-                    shortcut = {
+                    header = require("plugins.ui.dashboard").header,
+                    center = {
                         {
-                            desc = " New file",
-                            group = "String",
-                            action = "enew",
-                            key = "n",
-                        },
-                        {
-                            desc = " Files",
-                            group = "Label",
-                            action = "Telescope find_files",
+                            icon = "  ",
+                            desc = "Find file",
                             key = "f",
+                            action = "Telescope find_files",
                         },
                         {
-                            desc = " dotfiles",
-                            group = "Number",
-                            action = "Telescope dotfiles",
+                            icon = "  ",
+                            desc = "New file",
+                            key = "n",
+                            action = "enew",
+                        },
+                        {
+                            icon = "  ",
+                            desc = "Recent files",
+                            key = "o",
+                            action = "Telescope oldfiles",
+                        },
+                        {
+                            icon = "  ",
+                            desc = "Find text",
+                            key = "g",
+                            action = "Telescope live_grep",
+                        },
+                        {
+                            icon = "  ",
+                            desc = "dotfiles",
                             key = "d",
+                            action = "Telescope dotfiles",
                         },
                         {
-                            desc = "󱓍 Plugins",
-                            group = "@property",
+                            icon = "󱓍  ",
+                            desc = "Plugins",
+                            key = "p",
                             action = "Lazy",
-                            key = "u",
+                        },
+                        {
+                            icon = "󰗼  ",
+                            desc = "Quit",
+                            key = "q",
+                            action = "qa",
                         },
                     },
+                    footer = function()
+                        local stats = require("lazy").stats()
+                        local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+                        local padding = string.rep("\n", 1)
+                        local footer = padding
+                            .. "⚡ Neovim loaded "
+                            .. stats.loaded
+                            .. "/"
+                            .. stats.count
+                            .. " plugins in "
+                            .. ms
+                            .. "ms"
+                        return vim.split(footer, "\n")
+                    end,
                 },
             },
+            config = function(_, opts)
+                for _, option in ipairs(opts.config.center) do
+                    option.desc = option.desc .. string.rep(" ", 43 - #option.desc)
+                    option.key_format = "%s"
+                end
+                require("dashboard").setup(opts)
+            end,
         },
     },
     {
