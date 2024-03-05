@@ -75,7 +75,7 @@ return {
             config = function(_, opts)
                 for _, option in ipairs(opts.config.center) do
                     option.desc = option.desc .. string.rep(" ", 43 - #option.desc)
-                    option.key_format = "%s"
+                    option.key_format = "  %s"
                 end
                 require("dashboard").setup(opts)
             end,
