@@ -4,23 +4,23 @@
 }
 
 window {
-  color: #F97583;
+  color: #F5BDE6;
   background-color: #1F1F28;
 }
 
 window#waybar {
-  color: #F97583;
+  color: #F5BDE6;
   background-color: #1F1F28;
 }
 
 #workspaces button {
-  color: #F97583;
+  color: #F5BDE6;
 }
 
 #workspaces button.active {
   background-color: #2A2A37;
   border-radius: 0;
-  border-top: 3px solid #F97583;
+  border-top: 3px solid #F5BDE6;
 }
 
 #workspaces button.hover {
