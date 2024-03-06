@@ -9,6 +9,7 @@ return {
         },
         view = {
             relativenumber = true,
+            width = 35,
         },
     },
     config = function(_, opts)
