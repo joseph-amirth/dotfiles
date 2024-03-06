@@ -14,17 +14,27 @@ window#waybar {
 }
 
 #workspaces button {
+  /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+  box-shadow: inherit;
+  text-shadow: inherit;
+
   color: {{primary}};
+
+  border-radius: 0;
+  border: none;
+  border-top: 3px solid {{bg}};
+
+  padding: 6px 11px;
 }
 
 #workspaces button.active {
   background-color: {{bg_alt}};
-  border-radius: 0;
   border-top: 3px solid {{primary}};
 }
 
-#workspaces button.hover {
-  background-color: {{bg_alt}};
+#workspaces button:hover {
+  background: {{bg_alt}};
+  border-top: 3px solid {{primary}};
 }
 
 #pulseaudio {
