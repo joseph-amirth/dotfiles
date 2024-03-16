@@ -1,6 +1,7 @@
 return {
     "nvim-tree/nvim-tree.lua",
-    lazy = false,
+    name = "nvim-tree",
+    event = "VeryLazy",
     opts = {
         actions = {
             open_file = {

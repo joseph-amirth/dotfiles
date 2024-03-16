@@ -34,4 +34,4 @@ local function tab_size_2(filetypes)
     end
 end
 
-tab_size_2({ "javascript", "javascriptreact", "typescript", "typescriptreact", "css", "scss", "cpp" })
+tab_size_2({ "javascript", "javascriptreact", "typescript", "typescriptreact", "css", "scss", "cpp", "lua" })

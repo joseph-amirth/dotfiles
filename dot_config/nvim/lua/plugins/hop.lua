@@ -13,8 +13,9 @@ end
 return {
     {
         "smoka7/hop.nvim",
+        name = "hop",
         version = "*",
-        lazy = false,
+        event = "VeryLazy",
         opts = {},
         config = function(_, opts)
             require("hop").setup(opts)
