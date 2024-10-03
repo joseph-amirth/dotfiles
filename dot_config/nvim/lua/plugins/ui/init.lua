@@ -61,7 +61,7 @@ return {
             local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
             local padding = string.rep("\n", 1)
             local footer = padding ..
-                "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms"
+            "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms"
             return vim.split(footer, "\n")
           end,
         },
@@ -123,8 +123,5 @@ return {
     dependencies = {
       "fzf",
     },
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-context",
   },
 }
