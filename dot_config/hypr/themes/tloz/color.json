@@ -1,8 +1,8 @@
 {
-  "bg": "#1F1F28",
-  "bg_alt": "#2A2A37",
+  "bg": "#091B26",
+  "bg_alt": "#0D2838",
   "fg": "#C8C4AA",
-  "primary": "#2EA87E",
+  "primary": "#08A689",
   "secondary": "#8ABEB7",
   "active": "#A54242",
   "disabled": "#707880"
