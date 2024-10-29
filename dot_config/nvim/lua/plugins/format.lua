@@ -16,6 +16,8 @@ return {
 					typescriptreact = prettier_formatting,
 					json = prettier_formatting,
 					markdown = { "mdformat" },
+					rust = { lsp_format = "fallback" },
+					cpp = { "clang-format", stop_after_first = true },
 				},
 			}
 
