@@ -37,6 +37,10 @@ window#waybar {
   border-top: 3px solid {{primary}};
 }
 
+#custom-brightness {
+  padding: 0 10px;
+}
+
 #pulseaudio {
   padding: 0 10px;
 }
