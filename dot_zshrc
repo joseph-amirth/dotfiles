@@ -89,6 +89,7 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Aliases
+alias cat=bat
 alias vim=nvim
 
 # Exports
@@ -97,3 +98,5 @@ export EDITOR=nvim
 
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.cargo/bin
+
+eval "$(zoxide init --cmd cd zsh)"
