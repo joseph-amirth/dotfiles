@@ -49,7 +49,11 @@ set_wallpaper() {
     # Set wallpaper.
     hyprctl hyprpaper preload "~/.config/hypr/themes/$THEME/wallpaper.png"
     hyprctl hyprpaper wallpaper "HDMI-A-2,~/.config/hypr/themes/$THEME/wallpaper.png"
+    ln -sf ~/.config/hypr/themes/$THEME/wallpaper.png ~/.theme/wallpaper
 }
+
+[[ ! -d ~/.theme ]] && mkdir ~/.theme
 
 set_waybar_theme >/dev/null 2>&1
 set_wallpaper >/dev/null 2>&1
+echo -n $THEME > ~/.theme/name
