@@ -52,6 +52,14 @@ set_rofi_theme() {
         ~/.config/rofi/config.rasi
 }
 
+set_hyprlock_theme() {
+    sed -i \
+        -e "s/themes\/.*\//themes\/$THEME\//" \
+        -e "s/\$bg = .*/\$bg = rgba($(cut -c2- <<< $BG)dd)/" \
+        -e "s/\$primary = .*/\$primary = rgb($(cut -c2- <<< $PRIMARY))/" \
+        ~/.config/hypr/hyprlock.conf
+}
+
 set_wallpaper() {
     IMG=~/.config/hypr/themes/$THEME/wallpaper.png
     hyprctl hyprpaper preload $IMG
@@ -66,4 +74,5 @@ echo -n $THEME > ~/.theme
 
 set_waybar_theme >/dev/null 2>&1
 set_rofi_theme >/dev/null 2>&1
+set_hyprlock_theme >/dev/null 2>&1
 set_wallpaper >/dev/null 2>&1
