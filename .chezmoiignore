@@ -1,4 +1,3 @@
 .config/nvim/lazy-lock.json
-.config/waybar/style.css
 .config/ranger/plugins/**
 .config/bat/themes/**
