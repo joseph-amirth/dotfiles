@@ -9,6 +9,7 @@
       }
   },
   "hyprland/window": {
+    "icon": true,
     "max-length": 100
   },
   "pulseaudio": {
