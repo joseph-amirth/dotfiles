@@ -47,7 +47,9 @@ entry {
     background-color: @bg;
 
     color: @primary;
-    placeholder: "Search apps...";
+    placeholder-markup: true;
+    placeholder-color: @primary;
+    placeholder: "<span weight='extralight'><i>Search apps...</i></span>";
 }
 
 listview {
