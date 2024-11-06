@@ -17,7 +17,7 @@ configuration {
     disabled: #707880;
 }
 
-#window {
+window {
     width: 800px;
     background-color: @bg;
     border-radius: 10px;
@@ -81,5 +81,10 @@ element selected.normal {
 
 element-text {
     background-color: transparent;
+    text-color: @primary;
+}
+
+textbox {
+    padding: 10px;
     text-color: @primary;
 }
