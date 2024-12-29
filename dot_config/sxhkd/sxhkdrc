@@ -75,7 +75,7 @@ super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
 # Focus the next/previous window in the current desktop.
-super + {_,shift + }c
+super + {bracketright, bracketleft}
 	bspc node -f {next,prev}.local.!hidden.window
 
 # Focus the next/previous desktop in the current monitor.
