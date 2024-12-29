@@ -5,6 +5,8 @@ MONITOR=$(xrandr -q | grep "HDMI-1-0 connected")
 
 if [[ $MONITOR ]]; then
     xrandr --output HDMI-1-0 --auto --primary --output eDP-1 --off
+else
+    xrandr --output eDP-1 --auto --primary
 fi
 
 RESOLUTION=$(xrandr -q | grep -F "*" | awk '{ print $1 }')
@@ -20,7 +22,7 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 bspc config normal_border_color     "#777777"
 bspc config focused_border_color    "#FFFFFF"
 bspc config border_width            2
-bspc config window_gap              14
+bspc config window_gap              0
 
 bspc config split_ratio             0.50
 
@@ -28,7 +30,7 @@ bspc config single_monocle          true
 bspc config gapless_monocle         true
 bspc config borderless_monocle      true
 
-MONOCLE_PADDING=14
+MONOCLE_PADDING=0
 bspc config top_monocle_padding     $MONOCLE_PADDING
 bspc config right_monocle_padding   $MONOCLE_PADDING
 bspc config bottom_monocle_padding  $MONOCLE_PADDING
