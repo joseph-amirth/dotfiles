@@ -52,6 +52,9 @@ return {
 			end
 
 			cmp.setup {
+				completion = {
+					autocomplete = false,
+				},
 				preselect = "None",
 				snippet = {
 					expand = function(args)
@@ -69,6 +72,7 @@ return {
 					},
 				},
 				mapping = {
+					["<C-Space>"] = cmp.mapping.complete(),
 					["<CR>"] = cmp.mapping(cmp.mapping.confirm { select = true }, { "i" }),
 
 					["<Tab>"] = cmp.mapping(function(fallback)
