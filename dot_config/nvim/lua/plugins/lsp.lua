@@ -1,6 +1,7 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    event = "VeryLazy",
     dependencies = {
       "mason",
       "williamboman/mason-lspconfig.nvim",
@@ -44,13 +45,31 @@ return {
             vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
           end
 
-          map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-          map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-          map("gi", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementations")
+          map("gr", function()
+            require("telescope.builtin").lsp_references()
+          end, "[G]oto [R]eferences")
+
+          map("gd", function()
+            require("telescope.builtin").lsp_definitions()
+          end, "[G]oto [D]efinition")
+
+          map("gi", function()
+            require("telescope.builtin").lsp_implementations()
+          end, "[G]oto [I]mplementations")
+
           map("gD", vim.lsp.buf.definition, "[G]oto [D]eclaration")
-          map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-          map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-          map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+
+          map("<leader>D", function()
+            require("telescope.builtin").lsp_type_definitions()
+          end, "Type [D]efinition")
+
+          map("<leader>ds", function()
+            require("telescope.builtin").lsp_document_symbols()
+          end, "[D]ocument [S]ymbols")
+
+          map("<leader>ws", function()
+            require("telescope.builtin").lsp_dynamic_workspace_symbols()
+          end, "[W]orkspace [S]ymbols")
 
           map("K", vim.lsp.buf.hover, "Hover documentation")
 
@@ -63,6 +82,7 @@ return {
   {
     "williamboman/mason.nvim",
     name = "mason",
+    event = "VeryLazy",
     opts = {},
     config = function(_, opts)
       require("mason").setup(opts)

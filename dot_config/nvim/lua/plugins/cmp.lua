@@ -12,6 +12,21 @@ return {
       "hrsh7th/cmp-vsnip",
       "hrsh7th/vim-vsnip",
     },
+    keys = {
+      {
+        "<C-Space>",
+        function()
+          local cmp = require "cmp"
+          if cmp.visible() then
+            cmp.abort()
+          else
+            cmp.complete()
+          end
+        end,
+        mode = { "i", "c" },
+        desc = "Show completion options",
+      },
+    },
     config = function()
       local cmp = require "cmp"
 
@@ -72,14 +87,6 @@ return {
           },
         },
         mapping = {
-          ["<C-Space>"] = cmp.mapping(function()
-            if cmp.visible() then
-              cmp.abort()
-            else
-              cmp.complete()
-            end
-          end, { "i", "c" }),
-
           ["<CR>"] = cmp.mapping(cmp.mapping.confirm { select = true }, { "i" }),
 
           ["<Tab>"] = cmp.mapping(function(fallback)
