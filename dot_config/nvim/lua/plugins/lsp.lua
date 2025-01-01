@@ -8,8 +8,6 @@ return {
       "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
       local mason_lspconfig = require "mason-lspconfig"
       mason_lspconfig.setup {
         ensure_installed = { "lua_ls", "bashls" },
@@ -19,6 +17,7 @@ return {
           if server_name == "tsserver" then
             server_name = "ts_ls"
           end
+          local capabilities = require("cmp_nvim_lsp").default_capabilities()
           require("lspconfig")[server_name].setup { capabilities = capabilities }
         end,
       }

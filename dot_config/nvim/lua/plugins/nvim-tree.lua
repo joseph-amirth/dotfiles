@@ -8,6 +8,7 @@ return {
       },
     },
     view = {
+      number = true,
       relativenumber = true,
       width = 35,
     },
