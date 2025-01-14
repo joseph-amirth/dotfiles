@@ -53,12 +53,16 @@ set_rofi_theme() {
         ~/.config/rofi/config.rasi
 }
 
-set_hyprlock_theme() {
+set_hyprland_theme() {
     sed -i \
         -e "s/themes\/.*\//themes\/$THEME\//" \
         -e "s/\$bg = .*/\$bg = rgba($(cut -c2- <<< $BG)dd)/" \
         -e "s/\$primary = .*/\$primary = rgb($(cut -c2- <<< $PRIMARY))/" \
         ~/.config/hypr/hyprlock.conf
+
+    sed -i \
+        -e "s/\$primary = .*/\$primary = rgb($(cut -c2- <<< $PRIMARY))/" \
+        ~/.config/hypr/hyprland.conf
 }
 
 set_wallpaper() {
@@ -75,5 +79,5 @@ echo -n $THEME > ~/.theme
 
 set_waybar_theme >/dev/null 2>&1
 set_rofi_theme >/dev/null 2>&1
-set_hyprlock_theme >/dev/null 2>&1
+set_hyprland_theme >/dev/null 2>&1
 set_wallpaper >/dev/null 2>&1
