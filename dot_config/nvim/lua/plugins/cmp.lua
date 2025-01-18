@@ -18,7 +18,7 @@ return {
 
       local ELLIPSIS_CHAR = "… "
       local MAX_LABEL_WIDTH = 40
-      local MIN_LABEL_WIDTH = 40
+      local MIN_LABEL_WIDTH = 10
 
       local kind_icons = {
         Text = "󰉿",
@@ -125,11 +125,11 @@ return {
 
             -- Sources
             vim_item.menu = ({
-              buffer = "[Buffer]",
-              nvim_lsp = "[LSP]",
-              luasnip = "[LuaSnip]",
-              nvim_lua = "[Lua]",
-              latex_symbols = "[LaTeX]",
+              buffer = " ",
+              nvim_lsp = " ",
+              luasnip = "󰩫 ",
+              nvim_lua = " ",
+              latex_symbols = " ",
             })[entry.source.name]
 
             return vim_item
