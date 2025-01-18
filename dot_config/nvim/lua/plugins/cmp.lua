@@ -1,6 +1,7 @@
 return {
   {
     "hrsh7th/nvim-cmp",
+    event = "VeryLazy",
     dependencies = {
       -- Sources
       "hrsh7th/cmp-nvim-lsp",
@@ -11,21 +12,6 @@ return {
       -- Snippet engine
       "hrsh7th/cmp-vsnip",
       "hrsh7th/vim-vsnip",
-    },
-    keys = {
-      {
-        "<C-Space>",
-        function()
-          local cmp = require "cmp"
-          if cmp.visible() then
-            cmp.abort()
-          else
-            cmp.complete()
-          end
-        end,
-        mode = { "i", "c" },
-        desc = "Show completion options",
-      },
     },
     config = function()
       local cmp = require "cmp"
@@ -87,9 +73,17 @@ return {
           },
         },
         mapping = {
+          ["<C-Space>"] = cmp.mapping(function()
+            if cmp.visible() then
+              cmp.abort()
+            else
+              cmp.complete()
+            end
+          end, { "i" }),
+
           ["<CR>"] = cmp.mapping(cmp.mapping.confirm { select = true }, { "i" }),
 
-          ["<Tab>"] = cmp.mapping(function(fallback)
+          ["<C-n>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
             elseif vim.fn["vsnip#available"](1) == 1 then
@@ -99,7 +93,7 @@ return {
             end
           end, { "i", "s" }),
 
-          ["<S-Tab>"] = cmp.mapping(function()
+          ["<C-p>"] = cmp.mapping(function()
             if cmp.visible() then
               cmp.select_prev_item()
             elseif vim.fn["vsnip#jumpable"](-1) == 1 then

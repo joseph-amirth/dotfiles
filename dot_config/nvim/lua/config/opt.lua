@@ -28,10 +28,12 @@ vim.opt.signcolumn = "yes"
 
 vim.opt.pumheight = 20
 
+vim.opt.complete = {}
+
 local function tab_size_2(filetypes)
-	for _, filetype in ipairs(filetypes) do
-		vim.cmd("autocmd FileType " .. filetype .. " setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab")
-	end
+  for _, filetype in ipairs(filetypes) do
+    vim.cmd("autocmd FileType " .. filetype .. " setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab")
+  end
 end
 
 tab_size_2 { "javascript", "javascriptreact", "typescript", "typescriptreact", "css", "scss", "cpp", "lua" }
