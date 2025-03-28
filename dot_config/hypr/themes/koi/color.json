@@ -1,0 +1,9 @@
+{
+  "bg": "#025949",
+  "bg_alt": "#025949",
+  "fg": "#C8C4AA",
+  "primary": "#66F2A3",
+  "secondary": "#8ABEB7",
+  "active": "#A54242",
+  "disabled": "#707880"
+}
