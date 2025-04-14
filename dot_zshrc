@@ -88,15 +88,18 @@ source $ZSH/oh-my-zsh.sh
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# Paths
+[[ ! -d ~/.local/bin ]] || export PATH=$PATH:~/.local/bin
+[[ ! -d ~/.cargo/bin ]] || export PATH=$PATH:~/.cargo/bin
+
+function is_cmd() { command -v $1 >/dev/null }
+
 # Aliases
-alias cat=bat
-alias vim=nvim
+! is_cmd nvim || alias vim=nvim
+! is_cmd bat || alias cat=bat
+! is_cmd zoxide || eval "$(zoxide init --cmd cd zsh)"
+! is_cmd opam || eval "$(opam env)"
 
 # Exports
-export VISUAL=nvim
-export EDITOR=nvim
-
-export PATH=$PATH:~/.local/bin
-export PATH=$PATH:~/.cargo/bin
-
-eval "$(zoxide init --cmd cd zsh)"
+! is_cmd nvim || export VISUAL=nvim
+! is_cmd nvim || export EDITOR=nvim
