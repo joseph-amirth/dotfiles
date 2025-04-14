@@ -19,8 +19,10 @@ return {
           markdown = { "mdformat" },
           rust = { lsp_format = "fallback" },
           cpp = { "clang-format", stop_after_first = true },
+          c = { "clang-format", stop_after_first = true },
           kotlin = { "ktfmt" },
           ocaml = { "ocamlformat" },
+          haskell = { "ormolu" },
         },
       }
 
