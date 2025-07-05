@@ -3,25 +3,16 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       "mason",
-      "williamboman/mason-lspconfig.nvim",
+      "mason-lspconfig",
       "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
-      local mason_lspconfig = require "mason-lspconfig"
-      mason_lspconfig.setup {
-        ensure_installed = { "lua_ls", "bashls" },
-      }
-      mason_lspconfig.setup_handlers {
-        function(server_name)
-          if server_name == "tsserver" then
-            server_name = "ts_ls"
-          end
-          local capabilities = require("cmp_nvim_lsp").default_capabilities()
-          require("lspconfig")[server_name].setup { capabilities = capabilities }
-        end,
-      }
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      vim.lsp.config("*", {
+        capabilities = capabilities,
+      })
 
-      require("lspconfig").lua_ls.setup {
+      vim.lsp.config("lua_ls", {
         settings = {
           Lua = {
             completion = {
@@ -29,7 +20,7 @@ return {
             },
           },
         },
-      }
+      })
 
       vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
       vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
@@ -78,12 +69,17 @@ return {
     end,
   },
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     name = "mason",
     event = "VeryLazy",
     opts = {},
-    config = function(_, opts)
-      require("mason").setup(opts)
-    end,
+  },
+  {
+    "mason-org/mason-lspconfig.nvim",
+    name = "mason-lspconfig",
+    event = "VeryLazy",
+    opts = {
+      ensure_installed = { "lua_ls", "bashls" },
+    },
   },
 }
