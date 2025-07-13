@@ -1,3 +1,5 @@
+@import "colors.rasi"
+
 configuration {
     modes: "drun";
     font: "Jetbrains Mono Nerd Font 13";
@@ -8,43 +10,34 @@ configuration {
     drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
 }
 
-* {
-    bg: #1C2026;
-    bg-alt: #282E36;
-    fg: #C8C4AA;
-    primary: #F5BDE6;
-    secondary: #8ABEB7;
-    active: #A54242;
-    disabled: #707880;
-}
-
 window {
-    width: 700px;
+    fullscreen: true;
     padding: 0;
     border: 0;
-    border-radius: 13px;
-    background-color: @bg;
+    background-color: transparent;
+    children: [ dummy1, hdum, dummy2 ];
+}
+
+hdum {
+    orientation: horizontal;
+    children: [ dummy3, mainbox, dummy4 ];
 }
 
 inputbar {
-    padding: 100px;
-    background-image: url("~/.config/hypr/themes/neon/wallpaper.png", width);
     children: [ "textbox-prompt-colon", "entry" ];
 }
 
 textbox-prompt-colon {
     padding: 13px;
     border-radius: 13px;
-    background-color: @bg;
 
     color: @primary;
-    str: " ";
+    str: "";
 }
 
 entry {
     padding: 13px;
     border-radius: 13px;
-    background-color: @bg;
 
     color: @primary;
     placeholder-markup: true;
@@ -89,9 +82,9 @@ element alternate.active {
 element selected.normal {
     border-radius: 13px;
     border-color: @primary;
-    background-color: @bg-alt;
+    background-color: transparent;
     text-color: @primary;
-    border: 2px;
+    border: 1px;
 }
 
 element-text {

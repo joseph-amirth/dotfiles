@@ -1,0 +1,97 @@
+@import "colors.rasi"
+
+configuration {
+    modes: "drun";
+    font: "Jetbrains Mono Nerd Font 13";
+    fixed-num-lines: true;
+    show-icons: true;
+	icon-theme: "Papirus";
+    matching: "normal";
+    drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
+}
+
+window {
+    width: 700px;
+    padding: 0;
+    border: 0;
+    border-radius: 13px;
+    background-color: @bg;
+}
+
+inputbar {
+    padding: 100px;
+    background-image: url("~/.config/hypr/themes/neon/wallpaper.png", width);
+    children: [ "textbox-prompt-colon", "entry" ];
+}
+
+textbox-prompt-colon {
+    padding: 13px;
+    border-radius: 13px;
+    background-color: @bg;
+
+    color: @primary;
+    str: " ";
+}
+
+entry {
+    padding: 13px;
+    border-radius: 13px;
+    background-color: @bg;
+
+    color: @primary;
+    placeholder-markup: true;
+    placeholder-color: @primary;
+    placeholder: "<span weight='extralight'><i>Search apps...</i></span>";
+}
+
+listview {
+    padding: 13px;
+    border: 0;
+    columns: 1;
+    lines: 8;
+    scrollbar: false;
+}
+
+element {
+    padding: 13px;
+    background-color: transparent;
+    text-color: @primary;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @primary;
+}
+
+element normal.active {
+    background-color: transparent;
+    text-color: @primary;
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color: @primary;
+}
+
+element alternate.active {
+    background-color: transparent;
+    text-color: @primary;
+}
+
+element selected.normal {
+    border-radius: 13px;
+    border-color: @primary;
+    background-color: @bg-alt;
+    text-color: @primary;
+    border: 2px;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: @primary;
+}
+
+textbox {
+    padding: 10px;
+    text-color: @primary;
+}

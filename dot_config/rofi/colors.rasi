@@ -1,0 +1,10 @@
+* {
+    bg: #1C2026;
+    bg-alt: #282E36;
+    fg: #C8C4AA;
+    primary: #F5BDE6;
+    secondary: #8ABEB7;
+    active: #A54242;
+    disabled: #707880;
+}
+

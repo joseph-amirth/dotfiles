@@ -50,7 +50,7 @@ set_rofi_theme() {
         -e "s/active: .*;/active: $ACTIVE;/" \
         -e "s/disabled: .*;/disabled: $DISABLED;/" \
         -e "s/themes\/.*\//themes\/$THEME\//" \
-        ~/.config/rofi/config.rasi
+        ~/.config/rofi/colors.rasi
 }
 
 set_hyprland_theme() {
