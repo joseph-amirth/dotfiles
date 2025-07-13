@@ -1,0 +1,97 @@
+@import "colors.rasi"
+
+configuration {
+    modes: "drun";
+    font: "Jetbrains Mono Nerd Font 13";
+    fixed-num-lines: true;
+	icon-theme: "Papirus";
+    matching: "fuzzy";
+    drun-display-format: " {name} [<span weight='light' size='small'><i>({generic})</i></span>]";
+}
+
+window {
+    fullscreen: true;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    children: [ dummy1, hdum, dummy2 ];
+}
+
+hdum {
+    orientation: horizontal;
+    children: [ dummy3, mainbox, dummy4 ];
+}
+
+inputbar {
+    children: [ "textbox-prompt-colon", "entry" ];
+}
+
+textbox-prompt-colon {
+    padding: 13px;
+    border-radius: 13px;
+
+    color: @primary;
+    str: "";
+}
+
+entry {
+    padding: 13px;
+    border-radius: 13px;
+
+    color: @primary;
+    placeholder-markup: true;
+    placeholder-color: @primary;
+    placeholder: "<span weight='extralight'><i>Choose action...</i></span>";
+}
+
+listview {
+    padding: 13px;
+    border: 0;
+    columns: 1;
+    lines: 8;
+    scrollbar: false;
+}
+
+element {
+    padding: 13px;
+    background-color: transparent;
+    text-color: @primary;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @primary;
+}
+
+element normal.active {
+    background-color: transparent;
+    text-color: @primary;
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color: @primary;
+}
+
+element alternate.active {
+    background-color: transparent;
+    text-color: @primary;
+}
+
+element selected.normal {
+    border-radius: 13px;
+    border-color: @primary;
+    background-color: transparent;
+    text-color: @primary;
+    border: 1px;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: @primary;
+}
+
+textbox {
+    padding: 10px;
+    text-color: @primary;
+}
