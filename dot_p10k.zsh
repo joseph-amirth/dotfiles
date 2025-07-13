@@ -65,7 +65,7 @@
     # command_execution_time  # previous command duration
     # virtualenv              # python virtual environment
     # context                 # user@host
-    # time                    # current time
+    time                      # current time
     # =========================[ Line #2 ]=========================
     newline                   # \n
   )
@@ -110,10 +110,10 @@
   # Don't show context unless root or in SSH.
   typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_CONTENT_EXPANSION=
 
-  # Show previous command duration only if it's >= 5s.
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=5
-  # Don't show fractional seconds. Thus, 7s rather than 7.3s.
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=0
+  # Always show previous command duration.
+  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
+  # Show fractional seconds.
+  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=1
   # Duration format: 1d 2h 3m 4s.
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FORMAT='d h m s'
   # Yellow previous command duration.
@@ -167,7 +167,7 @@
   #   - always:   Trim down prompt when accepting a command line.
   #   - same-dir: Trim down prompt when accepting a command line unless this is the first command
   #               typed after changing current working directory.
-  typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=always
+  typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=off
 
   # Instant prompt mode.
   #
