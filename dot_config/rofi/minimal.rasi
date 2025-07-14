@@ -5,9 +5,9 @@ configuration {
     font: "Jetbrains Mono Nerd Font 13";
     fixed-num-lines: true;
     show-icons: true;
-	icon-theme: "Papirus";
+    icon-theme: "Papirus";
     matching: "normal";
-    drun-display-format: " {name} [<span weight='light' size='small'><i>({generic})</i></span>]";
+    drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
 }
 
 window {
@@ -25,18 +25,20 @@ hdum {
 
 inputbar {
     children: [ "textbox-prompt-colon", "entry" ];
+    spacing: 13px;
 }
 
 textbox-prompt-colon {
-    padding: 13px;
+    padding: 13px 0 13px 26px;
     border-radius: 13px;
 
     color: @primary;
-    str: "";
+    str: " ";
+    width: calc(13px + 1em + 13px);
 }
 
 entry {
-    padding: 13px;
+    padding: 13px 13px 13px 0;
     border-radius: 13px;
 
     color: @primary;
@@ -53,10 +55,20 @@ listview {
     scrollbar: false;
 }
 
+element-icon {
+    size: 1em;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: @primary;
+}
+
 element {
     padding: 13px;
     background-color: transparent;
     text-color: @primary;
+    spacing: 13px;
 }
 
 element normal.normal {
@@ -85,11 +97,6 @@ element selected.normal {
     background-color: transparent;
     text-color: @primary;
     border: 1px;
-}
-
-element-text {
-    background-color: transparent;
-    text-color: @primary;
 }
 
 textbox {

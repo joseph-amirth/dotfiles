@@ -24,18 +24,19 @@ hdum {
 
 inputbar {
     children: [ "textbox-prompt-colon", "entry" ];
+    spacing: 13px;
 }
 
 textbox-prompt-colon {
-    padding: 13px;
+    padding: 13px 0 13px 26px;
     border-radius: 13px;
 
     color: @primary;
-    str: "";
+    str: "󱐋";
 }
 
 entry {
-    padding: 13px;
+    padding: 13px 13px 13px 0;
     border-radius: 13px;
 
     color: @primary;
