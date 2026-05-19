@@ -40,7 +40,7 @@ vim.pack.add({
 })
 
 -- Enable select LSPs.
-vim.lsp.enable({ "clangd", "lua_ls" })
+vim.lsp.enable({ "clangd", "lua_ls", "rust_analyzer" })
 
 -- Configure LSP completion.
 vim.cmd([[set completeopt+=menuone,noselect,popup]])
