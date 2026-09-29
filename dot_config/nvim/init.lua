@@ -88,3 +88,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
+--------------------------------------------------------------------------------
+-- Git-related settings.
+--------------------------------------------------------------------------------
+
+vim.pack.add({
+    "https://github.com/lewis6991/gitsigns.nvim",
+})
+
+local gitsigns = require('gitsigns')
+vim.keymap.set("n", "gb", gitsigns.blame)
+vim.keymap.set("n", "gl", gitsigns.blame_line)
